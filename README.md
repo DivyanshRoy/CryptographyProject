@@ -1,1 +1,3 @@
-# CryptographyProject
+# Cryptography Project
+
+Run ElgamalECCEncryption.java
