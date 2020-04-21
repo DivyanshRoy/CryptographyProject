@@ -50,10 +50,11 @@ public class Elgamal {
     private Long keyInverse(Point p){
         for(Long i=(long)1;i<numPoints;i++){
             Point m = ec.multiply(p, i, h);
-            if(m.getX()==G.getX() && m.getY()==G.getY())
+            if((m.getX()-G.getX())==0 && (m.getY()-G.getY())==0) {
                 return i;
+            }
         }
-        return (long)0;
+        return (long)1;
     }
 
     /*
