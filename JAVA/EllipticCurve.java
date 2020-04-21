@@ -1,5 +1,4 @@
-package JAVA;
-import JAVA.Point;
+package JavaStarterCode;
 
 
 import java.util.Map;
@@ -10,19 +9,33 @@ import java.util.Vector;
 public class EllipticCurve {
 
     private Long a,b,m;
+    private Map<Point, Long> pointInverseMapping;
 
+    /*
+    EllipticCurve: Initialise an elliptic curve with Curve Parameters
+    Curve Equation: y^2 = (x^3 + ax + b) modulo m
+     */
     public EllipticCurve(Long a, Long b, Long m){
         this.a = a;
         this.b = b;
         this.m = m;
     }
 
+    /*
+    getM: Return m
+     */
     public Long getM(){
         return m;
     }
 
+    /*
+    getCurvePoints: Generate curve points which follow the Elliptic Curve equation y^2 = (x^3 + ax + b) modulo m
+    Output:-
+        Return list of Elliptic curve points
+     */
     public Vector<Point> getCurvePoints(){
         Long x,y;
+        pointInverseMapping = new TreeMap<>();
         Map<Long, Vector<Long> > mx = new TreeMap<Long, Vector<Long> >();
         Map<Long, Vector<Long> > my = new TreeMap<Long, Vector<Long> >();
         Vector<Long> tmp;
@@ -83,7 +96,11 @@ public class EllipticCurve {
         return points;
     }
 
-
+    /*
+    modInverse: Calculate the modular inverse of a with m as modulus
+    Output:-
+        Return a^-1 modulo m
+     */
     public Long modInverse(Long a, Long m, Helper h)
     {
         a = h.modulus(a, m);
@@ -98,7 +115,14 @@ public class EllipticCurve {
     }
 
 
-
+    /*
+    add: Add 2 Elliptic curve points
+    Input:-
+        p1: Point 1
+        p2: Point 2
+    Output:-
+        Return a Point which is the addition of p1 and p2 according to Elliptic curve arithmetic.
+     */
     public Point add(Point p1, Point p2, Helper h)
     {
         long x1 = p1.getX();
@@ -133,6 +157,13 @@ public class EllipticCurve {
 
     }
 
+    /*
+    addWithItself: Add a point to itself.
+    Input:-
+        p: Point p
+    Output:-
+        Return the sum of p and p using Elliptic curve arithmetic
+     */
     public Point addWithItself(Point p, Helper h)
     {
         Long x,y;
@@ -152,6 +183,16 @@ public class EllipticCurve {
         return new Point(xd, yd);
     }
 
+    /*
+    multiply: Multiply a Point with a scalar number
+    Input:-
+        p: Point p
+        l: Scalar to be used for multiplication
+    Output:-
+        Return the multiplication of p with l.
+        Hint: Multiplication is just repeated addition.
+        Challenge: Make this operation O(log(l)) instead of O(l).
+     */
     public Point multiply(Point p, Long l, Helper h)
     {
         if(l.longValue()==1)
@@ -168,6 +209,14 @@ public class EllipticCurve {
         return ans;
     }
 
+    /*
+    subtract: Return the difference between 2 curve points
+    Input:-
+        p1: Point p1
+        p2: Point p2
+    Output:-
+        Return difference of p1 and p2.
+     */
     public Point subtract(Point p1, Point p2, Helper h)
     {
         Point p3 = new Point(p2.getX(),m-p2.getY());

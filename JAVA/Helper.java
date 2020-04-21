@@ -1,16 +1,21 @@
-package JAVA;
-import JAVA.Point;
+package JavaStarterCode;
 
 import javafx.util.Pair;
 
-
-import java.sql.*;
 import java.util.*;
 
 public class Helper {
     Map<Integer, Point> asciiToPoint;
     Map<Pair<Long, Long>, Integer> pointToAscii;
 
+    /*
+    getSegmentSize: Each segment is a representation of a point using lowercase characters of the English alphabet.
+                    Return the minimum segment size needed to represent each point with a distinct segment.
+    Input:-
+        m: Modulo size of Elliptic Curve
+    Output:-
+        Return minimum length of segment
+     */
     public int getSegmentSize(Long m)
     {
         Long numPoints = (long)(m*m + 1);
@@ -23,6 +28,11 @@ public class Helper {
         return size;
     }
 
+    /*
+    generateCharacterPointMappings: Map Elliptic curve points to Ascii characters and vice-versa
+    Input:-
+        curvePoints: List of points on Elliptic Curve
+     */
     public void generateCharacterPointMappings(Vector<Point> curvePoints){
         Integer numPoints = curvePoints.size();
         Integer maxMappings = Math.min(numPoints, (int)65536);
@@ -51,16 +61,30 @@ public class Helper {
         this.pointToAscii = pointToAscii;
     }
 
+    /*
+    charToPoint: Return Point mapped to a character
+     */
     public Point charToPoint(char c)
     {
         return asciiToPoint.get((int)c);
     }
 
+    /*
+    pointToChar: Return character mapped to a Point
+     */
     public char pointToChar(Point p)
     {
         return (char)pointToAscii.get(new Pair(p.getX(), p.getY())).intValue();
     }
 
+    /*
+    streamToPoint: Convert a sequence of segments representing a list of points to the corresponding points
+    Input:-
+        stream: Sequence of segments
+        m: Modulo for Elliptic Curve
+    Output:-
+        Return list of points
+     */
     public Vector<Point> streamToPoint(String stream, Long m)
     {
         int segmentSize = getSegmentSize(m);
@@ -84,6 +108,15 @@ public class Helper {
         return v;
     }
 
+
+    /*
+    pointToStream: Convert a point to a segment
+    Input:-
+        p: Elliptic curve point
+        m: Modulo for Elliptic Curve
+    Output:-
+        Return segment representing the point
+     */
     public String pointToStream(Point p, Long m)
     {
         String stream = "";
@@ -102,7 +135,11 @@ public class Helper {
         return stream;
     }
 
-
+    /*
+    randomPoint: Return a random point from the Elliptic curve
+    Input:-
+        curvePoints: List of all points on the Elliptic Curve
+     */
     public Point randomPoint(Vector<Point> curvePoints)
     {
         Integer numPoints = curvePoints.size();
@@ -112,6 +149,9 @@ public class Helper {
         return curvePoints.get(r);
     }
 
+    /*
+    randomNumber: Return a random number in the range [0, m-1]
+     */
     public static Long randomNumber(Long m)
     {
         Random random=new Random();
@@ -119,6 +159,9 @@ public class Helper {
         return r;
     }
 
+    /*
+    modulus: Return l modulo m
+     */
     public Long modulus(Long l, Long m)
     {
         while(l<0)
