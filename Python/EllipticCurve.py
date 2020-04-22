@@ -16,7 +16,8 @@ class EllipticCurve:
 		return self.m
 
 	'''
-	getCurvePoints: Generate curve points which follow the Elliptic Curve equation y^2 = (x^3 + ax + b) modulo m
+	getCurvePoints: Generate curve points which follow the
+					Elliptic Curve equation y^2 = (x^3 + ax + b) modulo m
     Output:-
         Return list of Elliptic curve points
 	'''
@@ -82,9 +83,13 @@ class EllipticCurve:
         p1: Point 1
         p2: Point 2
     Output:-
-        Return a Point which is the addition of p1 and p2 according to Elliptic curve arithmetic.
+        Return a Point which is the addition of p1 and p2
+		according to Elliptic curve arithmetic.
 	'''
 	def add(self, p1, p2, h):
+		if p1 == p2:
+			return self.addWithItself(p1, h)
+
 		x1 = p1.getX()
 		y1 = p1.getY()
 		x2 = p2.getX()
@@ -96,8 +101,6 @@ class EllipticCurve:
 			return p1
 
 		if x1 == x2:
-			if y1 == y2:
-				return self.addWithItself(p1, h)
 			if y1 == self.m - y2:
 				return Point(0, 0)
 

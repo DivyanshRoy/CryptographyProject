@@ -40,10 +40,14 @@ def main():
 	message = input("Enter message: ")
 	print("Original message:", message)
 
-	encryptedMessage = el.Encrypt(message, receiver.getPublicKey())
+	encryptedMessage = el.Encrypt(message,
+								  receiver.getPublicKey(),
+								  sender.getPrivateKey())
 	print("Encrypted message:", encryptedMessage)
 
-	decryptedMessage = el.Decrypt(encryptedMessage, receiver.getPrivateKey())
+	decryptedMessage = el.Decrypt(encryptedMessage,
+								  sender.getPublicKey(),
+								  receiver.getPrivateKey())
 	print("Decrypted message:", decryptedMessage)
 
 if __name__ == "__main__":
