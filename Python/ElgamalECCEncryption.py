@@ -4,6 +4,13 @@ from Helper import Helper
 from Key import Key
 from Point import Point
 
+'''
+generateReferencePoint: Generate Base point for elliptic curve
+	Input:-
+		curvePoints: List of points on the Elliptic Curve
+	Output:-
+		Return Base point or Generator
+'''
 def generateReferencePoint(curvePoints, h):
 	G = h.randomPoint(curvePoints)
 	if G.getX() == 0 and G.getY() == 0:
@@ -11,6 +18,7 @@ def generateReferencePoint(curvePoints, h):
 	return G
 
 def main():
+	# Elliptic Curve Parameters
 	a = 17
 	b = 50
 	m = 191
@@ -21,18 +29,21 @@ def main():
 	h = Helper()
 	h.generateCharacterPointMappings(curvePoints)
 
+	# Base Point/Generator of Elliptic Curve
 	G = generateReferencePoint(curvePoints, h)
 	el = Elgamal(G, len(curvePoints), h, ec)
-	k = el.generateKey(len(curvePoints))
+
+	# Sender and Receiver's Public, Private keys
+	sender = el.generateKey(len(curvePoints))
+	receiver = el.generateKey(len(curvePoints))
 
 	message = input("Enter message: ")
 	print("Original message:", message)
 
-	encryptedMessage, alpha, gamma = el.Encrypt(message, k.getPublicKey())
+	encryptedMessage = el.Encrypt(message, receiver.getPublicKey())
 	print("Encrypted message:", encryptedMessage)
 
-	decryptedMessage = el.Decrypt(encryptedMessage,
-								  k.getPrivateKey(), alpha, gamma)
+	decryptedMessage = el.Decrypt(encryptedMessage, receiver.getPrivateKey())
 	print("Decrypted message:", decryptedMessage)
 
 if __name__ == "__main__":
