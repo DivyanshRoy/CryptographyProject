@@ -8,10 +8,6 @@ class Point:
 	def __str__(self):
 		return "(" + str(self.x) + "," + str(self.y) + ")"
 
-	# __eq__: Allows Point objects to be compared
-	def __eq__(self, other):
-		return self.getX() == other.getX() and self.getY() == other.getY()
-
 	# getX: Return x coordinate of Elliptic curve point
 	def getX(self):
 		return self.x

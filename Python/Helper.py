@@ -7,10 +7,8 @@ class Helper:
 		self.pointToAscii = {}
 
 	'''
-	getSegmentSize: Each segment is a representation of a point using
-					lowercase characters of the English alphabet.
-                    Return the minimum segment size needed to
-					represent each point with a distinct segment.
+	getSegmentSize: Each segment is a representation of a point using lowercase characters of the English alphabet.
+                    Return the minimum segment size needed to represent each point with a distinct segment.
     Input:-
         m: Modulo size of Elliptic Curve
     Output:-
@@ -25,8 +23,7 @@ class Helper:
 		return size
 
 	'''
-	generateCharacterPointMappings: Map Elliptic curve points to
-									Ascii characters and vice-versa
+	generateCharacterPointMappings: Map Elliptic curve points to Ascii characters and vice-versa
     Input:-
         curvePoints: List of points on Elliptic Curve
 	'''
@@ -41,13 +38,14 @@ class Helper:
 
 		asciiToPoint = {}
 		pointToAscii = {}
-		i = 0
+		sno = 0
+
 		for asciiCode in asciiCodes:
-			p = curvePoints[i]
+			p = curvePoints[sno]
 			p = (p.getX(), p.getY())
 			pointToAscii[p] = asciiCode
 			asciiToPoint[asciiCode] = p
-			i += 1
+			sno += 1
 
 		self.asciiToPoint = asciiToPoint
 		self.pointToAscii = pointToAscii
@@ -64,8 +62,7 @@ class Helper:
 		return chr(self.pointToAscii[p])
 
 	'''
-	streamToPoint: Convert a sequence of segments representing
-				   a list of points to the corresponding points
+	streamToPoint: Convert a sequence of segments representing a list of points to the corresponding points
     Input:-
         stream: Sequence of segments
         m: Modulo for Elliptic Curve
@@ -76,6 +73,7 @@ class Helper:
 		segmentSize = self.getSegmentSize(m)
 		v = []
 		i = 0
+
 		while i < len(stream):
 			temp = stream[i:i+segmentSize]
 			val = 0
@@ -83,7 +81,7 @@ class Helper:
 				d = ord(temp[j]) - ord('a')
 				val = (val * 26) + d
 
-			p = Point(val // m, val % m)
+			p = Point(val // m, val%m)
 			v.append(p)
 			i += segmentSize
 
@@ -98,9 +96,9 @@ class Helper:
         Return segment representing the point
 	'''
 	def pointToStream(self, p, m):
-		segmentSize = self.getSegmentSize(m)
 		stream = ""
 		temp = ""
+		segmentSize = self.getSegmentSize(m)
 		val = (p.getX() * m) + p.getY()
 
 		for i in range(0, segmentSize):
