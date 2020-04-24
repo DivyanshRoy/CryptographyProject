@@ -11,7 +11,7 @@ public class EllipticCurveCryptography {
     EllipticCurveArithmetic ec;
 
     /*
-    Elgamal: Initialise classes needed for Encryption
+    EllipticCurveCryptography: Initialise classes needed for Encryption
     Inputs:-
         G: Base Point of elliptic curve
         numPoints: Number of points in Elliptic curve

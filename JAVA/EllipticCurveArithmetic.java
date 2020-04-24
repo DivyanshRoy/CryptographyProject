@@ -12,7 +12,7 @@ public class EllipticCurveArithmetic {
     private Map<Point, Long> pointInverseMapping;
 
     /*
-    EllipticCurve: Initialise an elliptic curve with Curve Parameters
+    EllipticCurveArithmetic: Initialise an elliptic curve with Curve Parameters
     Curve Equation: y^2 = (x^3 + ax + b) modulo m
      */
     public EllipticCurveArithmetic(Long a, Long b, Long m){
