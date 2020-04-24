@@ -1,4 +1,4 @@
-package JavaStarterCode;
+package JAVA;
 
 
 public class Key {
