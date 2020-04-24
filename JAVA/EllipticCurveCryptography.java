@@ -57,8 +57,8 @@ public class EllipticCurveCryptography {
         for(i=0;i<len;i++)
         {
             r= Helper.randomNumber(numPoints);
-            A=ec.multiply(public_key, r, h);
-            B=ec.add(h.charToPoint(str.charAt(i)), ec.multiply(G, r, h), h);
+            A=ec.multiply(G, r, h);
+            B=ec.add(h.charToPoint(str.charAt(i)), ec.multiply(public_key, r, h), h);
             str1+=h.pointToStream(A, ec.getM());
             str1+=h.pointToStream(B, ec.getM());
         }
@@ -83,7 +83,7 @@ public class EllipticCurveCryptography {
         {
             Point c1 = v.elementAt(i);
             Point c2 = v.elementAt(i+1);
-            Point DM=ec.subtract(c2, ec.multiply(c1, ec.modInverse(private_key, numPoints, h), h), h);
+            Point DM=ec.subtract(c2, ec.multiply(c1, private_key, h), h);
             str1+=h.pointToChar(DM);
         }
 
