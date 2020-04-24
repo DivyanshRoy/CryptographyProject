@@ -71,7 +71,7 @@ public class EllipticCurveCryptography {
         str: Ciphertext
         private_key: Receiver's Private Key
     Output:-
-        Return generated key
+        Return plaintext message
      */
     public String Decrypt(String str, Long private_key)
     {
