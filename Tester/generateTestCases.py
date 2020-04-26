@@ -1,8 +1,8 @@
-from Python.EllipticCurveArithmetic import EllipticCurveArithmetic
-from Python.EllipticCurveCryptography import EllipticCurveCryptography
-from Python.Helper import Helper
-from Python.Key import Key
-from Python.Point import Point
+from EllipticCurveArithmetic import EllipticCurveArithmetic
+from EllipticCurveCryptography import EllipticCurveCryptography
+from Helper import Helper
+from Key import Key
+from Point import Point
 import random
 import string
 
