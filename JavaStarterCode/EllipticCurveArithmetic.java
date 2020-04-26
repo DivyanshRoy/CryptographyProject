@@ -103,7 +103,7 @@ public class EllipticCurveArithmetic {
      */
     public Long modInverse(Long a, Long m, Helper h)
     {
-        Point inverse;
+        Long inverse;
         //Start writing code here
 
         //End writing code here
