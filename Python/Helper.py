@@ -34,7 +34,6 @@ class Helper:
 		asciiCodes = []
 		for i in range(0, maxMappings):
 			asciiCodes.append(i)
-		# random.shuffle(asciiCodes)
 		asciiToPoint = {}
 		pointToAscii = {}
 		sno = 0

@@ -18,3 +18,11 @@ class Key:
 	# getPrivateKey: Return Private Key for user
 	def getPrivateKey(self):
 		return self.privateKey
+
+	# setPublicKey: Store Public Key of user
+	def setPublicKey(self, publicKey):
+		self.publicKey = publicKey
+
+	# setPrivatekey: Store Private Key of user
+	def setPrivateKey(self, privateKey):
+		self.privateKey = privateKey

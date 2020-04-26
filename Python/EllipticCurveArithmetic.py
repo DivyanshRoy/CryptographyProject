@@ -57,9 +57,6 @@ class EllipticCurveArithmetic:
 					if (x1, y1) not in points:
 						points.append((x1, y1))
 
-
-		# for i in points:
-		# 	curvePoints.append(Point(i[0], i[1]))
 		hashedPoints = []
 		for i in points:
 			v = i[0]*self.m + i[1]
