@@ -1,5 +1,5 @@
-from Python.Point import Point
-from Python.Helper import Helper
+from Point import Point
+from Helper import Helper
 
 class EllipticCurveArithmetic:
 	'''
