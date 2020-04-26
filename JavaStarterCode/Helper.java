@@ -43,7 +43,7 @@ public class Helper {
         {
             asciicodes.add(i);
         }
-        Collections.shuffle(asciicodes);
+        //Collections.shuffle(asciicodes);
 
         Map<Integer, Point> asciiToPoint = new HashMap<Integer, Point>();
         Map<Pair<Long, Long>, Integer> pointToAscii = new HashMap<Pair<Long, Long>, Integer>();
