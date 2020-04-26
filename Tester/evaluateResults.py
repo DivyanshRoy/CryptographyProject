@@ -1,6 +1,6 @@
-from Python.EllipticCurveArithmetic import EllipticCurveArithmetic
-from Python.EllipticCurveCryptography import EllipticCurveCryptography
-from Python.Helper import Helper
+from EllipticCurveArithmetic import EllipticCurveArithmetic
+from EllipticCurveCryptography import EllipticCurveCryptography
+from Helper import Helper
 
 '''
 generateReferencePoint: Generate Base point for elliptic curve
