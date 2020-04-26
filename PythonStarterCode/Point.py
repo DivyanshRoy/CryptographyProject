@@ -15,3 +15,11 @@ class Point:
 	# getY: Return y coordinate of Elliptic curve point
 	def getY(self):
 		return self.y
+
+	# setX: Store x coordinate of Elliptic curve point
+	def setX(self, x):
+		self.x = x
+
+	# setY: Store y coordinate of Elliptic curve point
+	def setY(self, y):
+		self.y = y

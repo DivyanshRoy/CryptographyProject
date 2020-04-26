@@ -48,6 +48,7 @@ class EllipticCurveCryptography:
 			# Write your code below
 
 			# Write your code above
+
 			ciphertext += self.h.pointToStream(A, self.ec.getM())
 			ciphertext += self.h.pointToStream(B, self.ec.getM())
 
@@ -62,14 +63,17 @@ class EllipticCurveCryptography:
         Return decrypted message
 	'''
 	def Decrypt(self, ciphertext, privateKey):
+		# Write your code below
+
+		# Write your code above
 		v = self.h.streamToPoint(ciphertext, self.ec.getM())
 		plaintext = ""
 		for i in range(0, len(v), 2):
 			c1 = v[i]
 			c2 = v[i + 1]
-			# Decrypt message character from c1/c2 and append it to plaintext
+			# Decrypt message character from c1/c2 and append to plaintext
 			# Write your code below
 
 			# Write your code above
-			
+
 		return plaintext

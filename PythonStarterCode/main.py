@@ -33,8 +33,7 @@ def main():
 	G = generateReferencePoint(curvePoints, h)
 	el = EllipticCurveCryptography(G, len(curvePoints), h, ec)
 
-	# Sender and Receiver's Public, Private keys
-	sender = el.generateKey(len(curvePoints))
+	# Receiver's Public, Private keys
 	receiver = el.generateKey(len(curvePoints))
 
 	message = input("Enter message: ")
