@@ -1,5 +1,5 @@
 import random
-from Point import Point
+from Python.Point import Point
 
 class Helper:
 	def __init__(self):
@@ -34,8 +34,7 @@ class Helper:
 		asciiCodes = []
 		for i in range(0, maxMappings):
 			asciiCodes.append(i)
-		random.shuffle(asciiCodes)
-
+		# random.shuffle(asciiCodes)
 		asciiToPoint = {}
 		pointToAscii = {}
 		sno = 0
@@ -46,7 +45,6 @@ class Helper:
 			pointToAscii[p] = asciiCode
 			asciiToPoint[asciiCode] = p
 			sno += 1
-
 		self.asciiToPoint = asciiToPoint
 		self.pointToAscii = pointToAscii
 

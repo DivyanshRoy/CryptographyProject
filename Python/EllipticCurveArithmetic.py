@@ -1,5 +1,5 @@
-from Point import Point
-from Helper import Helper
+from Python.Point import Point
+from Python.Helper import Helper
 
 class EllipticCurveArithmetic:
 	'''
@@ -57,10 +57,19 @@ class EllipticCurveArithmetic:
 					if (x1, y1) not in points:
 						points.append((x1, y1))
 
-		curvePoints = []
-		for i in points:
-			curvePoints.append(Point(i[0], i[1]))
 
+		# for i in points:
+		# 	curvePoints.append(Point(i[0], i[1]))
+		hashedPoints = []
+		for i in points:
+			v = i[0]*self.m + i[1]
+			hashedPoints.append(v)
+		hashedPoints.sort()
+		curvePoints = []
+		for h in hashedPoints:
+			x = h//self.m
+			y = h%self.m
+			curvePoints.append(Point(x,y))
 		return curvePoints
 
 	'''
