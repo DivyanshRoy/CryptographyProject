@@ -93,6 +93,18 @@ public class EllipticCurveArithmetic {
             }
         }
         points.add(new Point((long)0,(long)0));
+        Vector<Long> hashedPoints = new Vector<>();
+        for(Point p: points){
+            Long v = p.getX()*this.m + p.getY();
+            hashedPoints.add(v);
+        }
+        Collections.sort(hashedPoints);
+        points = new Vector<Point>();
+
+        for(Long h: hashedPoints){
+            Point p = new Point(h/this.m, h%this.m);
+            points.add(p);
+        }
         return points;
     }
 
