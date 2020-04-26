@@ -1,5 +1,5 @@
 import random
-from Python.Point import Point
+from Point import Point
 
 class Helper:
 	def __init__(self):
