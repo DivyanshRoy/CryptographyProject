@@ -50,3 +50,4 @@ int main(){
     string decryptedMessage = el.Decrypt(encryptedMessage, k.getPrivateKey());
     cout<<"Decrypted message: "<<decryptedMessage<<endl;
 }
+
