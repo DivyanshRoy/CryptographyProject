@@ -41,13 +41,13 @@ def main():
         N = 64
         message = ''.join(random.choices(string.ascii_lowercase +
                              string.digits, k = N))
-        file2 = open(str("testcases/"+person+"_test1.txt"), "w")
+        file2 = open(str("testcases/"+person+"_test1.txt"), "w+")
         file2.write(str(G.getX())+" "+str(G.getY())+"\n")
         file2.write(str(receiver.getPublicKey().getX()) + " " + str(receiver.getPublicKey().getY()) + "\n")
         file2.write(str(message+"\n"))
         file2.close()
 
-        file3 = open(str("res/" + person + "_private_key_test1.txt"), "w")
+        file3 = open(str("res/" + person + "_private_key_test1.txt"), "w+")
         file3.write(str(receiver.getPrivateKey()) + "\n")
         file3.close()
 
@@ -58,7 +58,7 @@ def main():
         message = ''.join(random.choices(string.ascii_lowercase +
                                          string.digits, k=N))
         encryptedMessage = el.Encrypt(message, receiver.getPublicKey())
-        file2 = open(str("testcases/" + person + "_test2.txt"), "w")
+        file2 = open(str("testcases/" + person + "_test2.txt"), "w+")
         file2.write(str(G.getX()) + " " + str(G.getY()) + "\n")
         file2.write(str(receiver.getPrivateKey()) + "\n")
         file2.write(str(encryptedMessage + "\n"))
